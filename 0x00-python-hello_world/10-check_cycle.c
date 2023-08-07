@@ -8,16 +8,17 @@
   */
 int check_cycle(listint_t *list)
 {
-	listint_t *p = list;
+	listint_t *turtle = list;
+	listint_t *rapit = list;
 
-	if (!p)
+	if (!list)
 		return (0);
-	p = p->next;
-	while (p)
+	while (turtle && rapit)
 	{
-		if (p < p->next)
+		turtle = turtle->next;
+		rapit = (rapit->next)->next;
+		if (turtle == rapit)
 			return (1);
-		p = p->next;
 	}
 	return (0);
 }
