@@ -13,10 +13,10 @@ int check_cycle(listint_t *list)
 
 	if (!list)
 		return (0);
-	while (turtle && rapit)
+	while (rapit && rapit->next && (rapit->next)->next)
 	{
-		turtle = turtle->next;
-		rapit = (rapit->next)->next;
+		turtle = (turtle->next)->next;
+		rapit = ((rapit->next)->next)->next;
 		if (turtle == rapit)
 			return (1);
 	}
