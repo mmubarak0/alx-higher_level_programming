@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Compiling $PYFILE ..."
+cp "$PYFILE" "${PYFILE}c"
+chmod u+x "${PYFILE}c"
