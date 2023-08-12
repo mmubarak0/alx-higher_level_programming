@@ -1,6 +1,42 @@
 #include "lists.h"
 
 /**
+  * push - push value to stack.
+  * @s: stack struct.
+  * @value: value to push.
+  */
+void push(stack *s, int value)
+{
+	if (s->top == MAX_SIZE - 1)
+		return; /* stack is full */
+	s->n[++(s->top)] = value;
+}
+
+/**
+  * pop - pop value from stack.
+  * @s: stack struct.
+  * Return: value popped.
+  */
+int pop(stack *s)
+{
+	if (s->top == -1)
+		return (-1); /* stack is empty */
+	return (s->n[(s->top)--]);
+}
+
+/**
+  * peek - element at the peek of stack.
+  * @s: stack struct.
+  * Return: value of peek.
+  */
+int peek(stack *s)
+{
+	if (s->top == -1)
+		return (-9999999);
+	return (s->n[s->top]);
+}
+
+/**
   * is_palindrome - checks if a singly linked list is a palindrome.
   * @head: the first node of a singly linked list.
   * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
@@ -8,42 +44,37 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *list_head = *head;
-	listint_t *list_tail = *head;
-	listint_t *new;
-	listint_t *current;
-	listint_t *prev = NULL, *next = NULL;
-	int n = 0, i, d;
+	stack *s = malloc(sizeof(stack));
+	int len, half_len, i = 0;
 
-	if (!*head)
+	s->top = -1;
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		free(s);
 		return (1);
-	new = NULL;
-	while (list_tail)
-	{
-		n++;
-		add_nodeint_end(&new, list_tail->n);
-		list_tail = list_tail->next;
 	}
-	current = new;
-	while (current != NULL)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-	list_tail = prev;
-	i = 0;
-	d = n / 2;
-	while (i++ <= d)
-	{
-		if (list_head->n != list_tail->n)
-		{
-			free_listint(prev);
-			return (0);
-		}
+	for (len = 0; list_head; len++)
 		list_head = list_head->next;
-		list_tail = list_tail->next;
+	half_len = len / 2;
+	list_head = *head;
+	while (list_head)
+	{
+		if (peek(s) != list_head->n)
+		{
+			push(s, list_head->n);
+			if (len % 2 != 0 && i == half_len)
+				pop(s);
+		}
+		else
+			pop(s);
+		list_head = list_head->next;
+		i++;
 	}
-	free_listint(prev);
-	return (1);
+	if (peek(s) == -9999999)
+	{
+		free(s);
+		return (1);
+	}
+	free(s);
+	return (0);
 }

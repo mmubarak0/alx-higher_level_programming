@@ -2,6 +2,9 @@
 #define LISTS_H
 
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define MAX_SIZE 1024
 
 /**
  * struct listint_s - singly linked list
@@ -16,6 +19,17 @@ typedef struct listint_s
 	int n;
 	struct listint_s *next;
 } listint_t;
+
+/**
+ * struct s - stack data structure.
+ * @n: data number.
+ * @top: top index.
+ */
+typedef struct s
+{
+	int n[MAX_SIZE];
+	int top;
+} stack;
 
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
