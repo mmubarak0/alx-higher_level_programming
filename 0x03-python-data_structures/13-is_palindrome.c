@@ -44,37 +44,30 @@ int peek(stack *s)
 int is_palindrome(listint_t **head)
 {
 	listint_t *list_head = *head;
-	stack *s = malloc(sizeof(stack));
+	stack s;
 	int len, half_len, i = 0;
 
-	s->top = -1;
+	s.top = -1;
 	if (*head == NULL || (*head)->next == NULL)
-	{
-		free(s);
 		return (1);
-	}
 	for (len = 0; list_head; len++)
 		list_head = list_head->next;
 	half_len = len / 2;
 	list_head = *head;
 	while (list_head)
 	{
-		if (peek(s) != list_head->n)
+		if (peek(&s) != list_head->n)
 		{
-			push(s, list_head->n);
+			push(&s, list_head->n);
 			if (len % 2 != 0 && i == half_len)
-				pop(s);
+				pop(&s);
 		}
 		else
-			pop(s);
+			pop(&s);
 		list_head = list_head->next;
 		i++;
 	}
-	if (peek(s) == -9999999)
-	{
-		free(s);
+	if (peek(&s) == -9999999)
 		return (1);
-	}
-	free(s);
 	return (0);
 }
