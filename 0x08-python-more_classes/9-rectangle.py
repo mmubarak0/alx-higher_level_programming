@@ -10,7 +10,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Initialize the rectangle instance."""
-        number_of_instances += 1
+        Rectangle.number_of_instances += 1
         if type(width) is not int:
             raise TypeError("width must be an integer")
         if width < 0:
@@ -66,10 +66,7 @@ class Rectangle:
         if self.__height and self.__width:
             res = []
             for i in range(self.__height):
-                res.append([])
-                for j in range(self.__width):
-                    res[i].append(print_symbol)
-                res[i] = "".join(res[i])
+                res.append(str(self.print_symbol) * self.__width)
             result = "\n".join(res)
         return result
 
@@ -79,7 +76,7 @@ class Rectangle:
 
     def __del__(self):
         """Call when an instance is deleted."""
-        number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
@@ -96,8 +93,4 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         """Define a square."""
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
         return cls(size, size)

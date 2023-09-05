@@ -9,7 +9,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Initialize the rectangle instance."""
-        number_of_instances += 1
+        Rectangle.number_of_instances += 1
         if type(width) is not int:
             raise TypeError("width must be an integer")
         if width < 0:
@@ -71,9 +71,9 @@ class Rectangle:
 
     def __repr__(self):
         """Return the string repr of an instance of the class."""
-        return f"{self.__class__}({self.__width}, {self.__height})"
+        return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
         """Call when an instance is deleted."""
-        number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
