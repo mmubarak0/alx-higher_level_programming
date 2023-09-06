@@ -45,3 +45,7 @@ TypeError: text must be a string
 some text  .
 <BLANKLINE>
 but with 2 spaces around the dot
+>>> text_indentation() #doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+TypeError: text_indentation() missing 1 required positional argument: 'text'

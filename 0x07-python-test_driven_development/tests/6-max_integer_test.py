@@ -15,24 +15,28 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_simple_list_2(self):
         """Simple test 2."""
-        li = [1, -2, 4, 3]
-        self.assertEqual(max_integer(li), 4)
+        li = [7, -2, 4, 3]
+        self.assertEqual(max_integer(li), 7)
 
     def test_simple_list_3(self):
         """Simple test 3."""
-        li = [1]
-        self.assertEqual(max_integer(li), 1)
+        li = [-1, -2, 4, -3]
+        self.assertEqual(max_integer(li), 4)
 
     def test_simple_list_4(self):
         """Simple test 4."""
+        li = [-1, -2, -4, -3]
+        self.assertEqual(max_integer(li), -1)
+
+    def test_simple_list_5(self):
+        """Simple test 5."""
+        li = [1]
+        self.assertEqual(max_integer(li), 1)
+
+    def test_simple_list_6(self):
+        """Simple test 4."""
         li = [1, 1.5]
         self.assertEqual(max_integer(li), 1.5)
-
-    # def test_invalid_list(self):
-    #     """Invalid list test."""
-    #     li = "1245"
-    #     with self.assertRaises(TypeError):
-    #         result = max_integer(li)
 
     def test_invalid_list_item(self):
         """Invalid list item test."""

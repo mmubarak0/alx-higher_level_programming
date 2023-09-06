@@ -40,3 +40,13 @@ ZeroDivisionError: division by zero
 True
 >>> matrix_divided(matrix, 1) != matrix
 False
+>>> matrix_divided(matrix, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+>>> matrix_divided(matrix) #doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> matrix_divided() #doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

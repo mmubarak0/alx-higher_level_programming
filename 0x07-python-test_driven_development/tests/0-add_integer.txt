@@ -21,3 +21,15 @@ TypeError: b must be an integer
 Traceback (most recent call last):
     ...
 TypeError:
+>>> print(add_integer(float('inf'), 100)) # doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+>>> print(add_integer(-float('inf'), -100)) # doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+>>> print(add_integer(-float('nan'), 10)) # doctest: +ELLIPSIS, +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
