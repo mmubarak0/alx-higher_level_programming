@@ -1,0 +1,18 @@
+>>> Rectangle = __import__('8-rectangle').Rectangle
+>>> r = Rectangle(3, 5)
+>>> print(r) #doctest: +ELLIPSIS
+<8-rectangle.Rectangle object at ...>
+>>> print(dir(r)) #doctest: +ELLIPSIS
+['_Rectangle__height', ...]
+>>> try: #doctest: +ELLIPSIS
+...     print("Rectangle: {} - {}".format(r.width, r.height))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[AttributeError] 'Rectangle' object has no attribute 'width'
+>>> try:
+...     r2 = Rectangle(4, True)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] height must be an integer
