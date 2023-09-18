@@ -22,6 +22,15 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r2.id, 24)
         self.assertEqual(r3.id, 12)
 
+    def test_rect_2_1(self):
+        """Edge case missing arguments."""
+        # r1 = Rectangle(1, 1, 1, 1, 9)
+        with self.assertRaises(TypeError):
+            Rectangle(1)
+
+        with self.assertRaises(TypeError):
+            Rectangle()
+
     def test_rect_2(self):
         """Magic method __str."""
         r1 = Rectangle(4, 6, 2, 1, 12)

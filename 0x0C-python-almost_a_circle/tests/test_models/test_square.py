@@ -92,6 +92,11 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             s1.size = "9"
 
+    def test_square_2_1(self):
+        """Edge case missing argument."""
+        with self.assertRaises(TypeError):
+            Square()
+
     def test_square_3(self):
         """Update method."""
         s1 = Square(5)
