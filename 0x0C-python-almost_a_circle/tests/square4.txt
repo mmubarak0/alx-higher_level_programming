@@ -1,0 +1,18 @@
+>>> from models.square import Square
+
+>>> s1 = Square(10, 2, 1)
+>>> print(s1)
+[Square] (1) 2/1 - 10
+>>> s1_dictionary = s1.to_dictionary()
+>>> print(s1_dictionary)
+{'id': 1, 'x': 2, 'size': 10, 'y': 1}
+>>> print(type(s1_dictionary))
+<class 'dict'>
+>>> s2 = Square(1, 1)
+>>> print(s2)
+[Square] (2) 1/0 - 1
+>>> s2.update(**s1_dictionary)
+>>> print(s2)
+[Square] (1) 2/1 - 10
+>>> print(s1 == s2)
+False

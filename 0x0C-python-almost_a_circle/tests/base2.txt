@@ -1,0 +1,14 @@
+>>> from models.base import Base
+>>> from models.rectangle import Rectangle
+
+>>> r1 = Rectangle(10, 7, 2, 8)
+>>> dictionary = r1.to_dictionary()
+>>> json_dictionary = Base.to_json_string([dictionary])
+>>> print(dictionary)
+{'x': 2, 'y': 8, 'id': 1, 'height': 7, 'width': 10}
+>>> print(type(dictionary))
+<class 'dict'>
+>>> print(json_dictionary)
+[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]
+>>> print(type(json_dictionary))
+<class 'str'>

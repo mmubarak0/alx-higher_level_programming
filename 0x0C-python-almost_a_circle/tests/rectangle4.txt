@@ -1,0 +1,29 @@
+>>> from models.rectangle import Rectangle
+>>> from models.base import Base
+
+>>> try:
+...     Rectangle(10, "2")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] height must be an integer
+>>> try:
+...     r = Rectangle(10, 2)
+...     r.width = -10
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[ValueError] width must be > 0
+>>> try:
+...     r = Rectangle(10, 2)
+...     r.x = {}
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] x must be an integer
+>>> try:
+...     Rectangle(10, 2, 3, -1)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[ValueError] y must be >= 0
