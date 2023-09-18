@@ -42,6 +42,7 @@ class Base:
             if obj == float('inf') or obj == -float('inf'):
                 raise OverflowError(f'{name} overflow error')
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """List to Json."""
         if list_dictionaries is None or len(list_dictionaries) == 0:
@@ -52,10 +53,14 @@ class Base:
     def save_to_file(cls, list_objs):
         """Object to json file."""
         with open(f"{cls.__name__}.json", 'w', encoding='utf-8') as f:
-            list_dict = [ob.to_dictionary() for ob in list_objs]
-            res = cls.to_json_string(list_dict)
-            f.write(res)
+            if list_objs is None:
+                f.write("[]")
+            else:
+                list_dict = [ob.to_dictionary() for ob in list_objs]
+                res = cls.to_json_string(list_dict)
+                f.write(res)
 
+    @staticmethod
     def from_json_string(json_string):
         """From json string."""
         if json_string is None or len(json.loads(json_string)) == 0:

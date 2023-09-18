@@ -76,6 +76,10 @@ class TestBaseClass(unittest.TestCase):
                 ]
             self.assertEqual(a, json.loads(file.read()))
 
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual([], json.loads(file.read()))
+
     def test_7(self):
         """From_json_string method."""
         list_input = [
