@@ -31,6 +31,24 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle()
 
+    def test_rect_2_2(self):
+        """Edge changing values."""
+        r1 = Rectangle(1, 1, 1, id=9)
+        r1.id = 7
+        r1.x = 2
+        r1.width = 2
+        r1.height = 2
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 2)
+        self.assertEqual(r1.id, 7)
+
+        with self.assertRaises(TypeError):
+            r1.x = "5"
+
+        with self.assertRaises(ValueError):
+            r1.width = 0
+
     def test_rect_2(self):
         """Magic method __str."""
         r1 = Rectangle(4, 6, 2, 1, 12)

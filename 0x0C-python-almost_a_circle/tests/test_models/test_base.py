@@ -51,6 +51,11 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(a.id, -4)
         self.assertEqual(b.id, -5)
 
+    def test_4_1(self):
+        """Type_error test."""
+        with self.assertRaises(TypeError):
+            a = Base("5")
+
     def test_5(self):
         """To_json_string method."""
         r1 = Rectangle(10, 7, 2, 8)
