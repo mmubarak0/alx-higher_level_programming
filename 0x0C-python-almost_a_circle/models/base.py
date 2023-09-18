@@ -2,6 +2,7 @@
 """Base package."""
 
 import json
+import csv
 
 
 class Base:
@@ -91,3 +92,18 @@ class Base:
         except FileNotFoundError:
             return res
         return res
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Docs here."""
+        pass
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Docs here."""
+        pass
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Docs here."""
+        pass
