@@ -96,12 +96,40 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Docs here."""
-        pass
+        with open(f"{cls.__name__}.csv", "w", encoding='utf-8') as f:
+            list_dicts = [ob.to_dictionary() for ob in list_objs]
+            if cls.__name__ == 'Rectangle':
+                fields = ['id', 'width', 'height', 'x', 'y']
+            else:
+                fields = ['id', 'size', 'x', 'y']
+            writer = csv.DictWriter(f, fieldnames=fields)
+            writer.writeheader()
+            for obj in list_dicts:
+                writer.writerow(obj)
 
     @classmethod
     def load_from_file_csv(cls):
         """Docs here."""
-        pass
+        with open(f"{cls.__name__}.csv", "r", encoding='utf-8') as f:
+            dictreader = csv.DictReader(f)
+            res = []
+            for obj in dictreader:
+                res_dict = {}
+                if cls.__name__ == 'Rectangle':
+                    res_dict['id'] = int(obj['id'])
+                    res_dict['width'] = int(obj['width'])
+                    res_dict['height'] = int(obj['height'])
+                    res_dict['x'] = int(obj['x'])
+                    res_dict['y'] = int(obj['y'])
+                else:
+                    res_dict['id'] = int(obj['id'])
+                    res_dict['size'] = int(obj['size'])
+                    res_dict['x'] = int(obj['x'])
+                    res_dict['y'] = int(obj['y'])
+                new_instance = cls.create(**res_dict)
+                res.append(new_instance)
+            return res
+        return []
 
     @staticmethod
     def draw(list_rectangles, list_squares):
