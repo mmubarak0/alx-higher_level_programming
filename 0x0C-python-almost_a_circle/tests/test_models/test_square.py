@@ -73,6 +73,14 @@ class TestSquareClass(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(capturedOutput.getvalue(), dx3)
 
+        s4 = Square(3, 1, 3, 9)
+        self.assertEqual(
+            str(s4),
+            "[Square] (9) 1/3 - 3"
+        )
+
+        self.assertEqual(s4.area(), 9)
+
     def test_square_2(self):
         """Size test."""
         s1 = Square(5)
@@ -176,3 +184,20 @@ class TestSquareClass(unittest.TestCase):
         )
 
         self.assertFalse(s1 == s2)
+
+    def test_square_5(self):
+        """Value errors."""
+        with self.assertRaises(TypeError):
+            Square("1")
+        with self.assertRaises(TypeError):
+            Square(1, "1")
+        with self.assertRaises(TypeError):
+            Square(1, 2, "1")
+        with self.assertRaises(ValueError):
+            Square(0)
+        with self.assertRaises(ValueError):
+            Square(-1)
+        with self.assertRaises(ValueError):
+            Square(1, -1)
+        with self.assertRaises(ValueError):
+            Square(1, 2, -1)
