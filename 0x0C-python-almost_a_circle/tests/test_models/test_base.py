@@ -81,12 +81,32 @@ class TestBaseClass(unittest.TestCase):
                 ]
             self.assertEqual(a, json.loads(file.read()))
 
+        r1 = Square(10, 2, 8, id=11)
+        r2 = Square(2, id=12)
+        Square.save_to_file([r1, r2])
+        with open("Square.json", "r") as file:
+            a = [
+                    {"x": 2, "y": 8, "id": 11, "size": 10},
+                    {"x": 0, "y": 0, "id": 12, "size": 2}
+                ]
+            self.assertEqual(a, json.loads(file.read()))
+
+    def test_6_1(self):
+        """Passing None end empty list to save_to_file method."""
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertEqual([], json.loads(file.read()))
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
+            self.assertEqual([], json.loads(file.read()))
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual([], json.loads(file.read()))
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
             self.assertEqual([], json.loads(file.read()))
 
     def test_7(self):

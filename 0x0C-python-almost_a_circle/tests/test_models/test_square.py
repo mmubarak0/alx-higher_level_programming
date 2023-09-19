@@ -201,3 +201,12 @@ class TestSquareClass(unittest.TestCase):
             Square(1, -1)
         with self.assertRaises(ValueError):
             Square(1, 2, -1)
+
+    def test_square_6(self):
+        """Save to file method."""
+        Square.save_to_file([Square(2)])
+        with open("Square.json", "r") as file:
+            a = [
+                    {"x": 0, "y": 0, "id": 45, "size": 2}
+                ]
+            self.assertEqual(a, json.loads(file.read()))
