@@ -59,7 +59,25 @@ class TestRectangleClass(unittest.TestCase):
     def test_rect_3(self):
         """Type errors."""
         with self.assertRaises(TypeError):
+            Rectangle("1", 2)
+        with self.assertRaises(TypeError):
             Rectangle(10, "2")
+        with self.assertRaises(TypeError):
+            Rectangle(10, 2, "2")
+        with self.assertRaises(TypeError):
+            Rectangle(10, 2, 2, "2")
+        with self.assertRaises(ValueError):
+            Rectangle(0, 1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0)
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, -1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 1, -1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 1, 1, -1)
         with self.assertRaises(ValueError):
             r = Rectangle(10, 2)
             r.width = -10
