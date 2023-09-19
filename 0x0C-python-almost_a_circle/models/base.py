@@ -3,6 +3,7 @@
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -134,4 +135,45 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """Docs here."""
-        pass
+        PEN_COLORS = ["purple", "red", "green", "orange", "blue", "yellow"]
+        wn = turtle.Screen()
+        s = turtle.Turtle()
+        for rect in list_rectangles:
+            s.color(PEN_COLORS[rect.id % 6])
+            s.fillcolor(PEN_COLORS[rect.id % 6])
+            s.penup()
+            s.speed(5)
+            s.setx(rect.x)
+            s.sety(rect.y)
+            s.pendown()
+            s.speed(1)
+            if rect.id % 2:
+                s.begin_fill()
+            s.forward(rect.width)
+            s.right(90)
+            s.forward(rect.height)
+            s.right(90)
+            s.forward(rect.width)
+            s.right(90)
+            s.forward(rect.height)
+            s.end_fill()
+        for square in list_squares:
+            s.color(PEN_COLORS[square.id % 6])
+            s.fillcolor(PEN_COLORS[square.id % 6])
+            s.penup()
+            s.speed(5)
+            s.setx(square.x)
+            s.sety(square.y)
+            s.pendown()
+            s.speed(1)
+            if square.id % 2:
+                s.begin_fill()
+            s.forward(square.size)
+            s.right(90)
+            s.forward(square.size)
+            s.right(90)
+            s.forward(square.size)
+            s.right(90)
+            s.forward(square.size)
+            s.end_fill()
+        turtle.done()
