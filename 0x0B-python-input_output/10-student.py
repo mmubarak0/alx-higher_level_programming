@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Studen to json."""
 
-import json
-
 
 class Student:
     """Student class."""
@@ -15,7 +13,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """Convert to json."""
-        if type(attrs) is list:
+        if type(attrs) is list and len(attrs) > 0:
             new_dict = {}
             if all(type(s) is str for s in attrs):
                 for s in attrs:
