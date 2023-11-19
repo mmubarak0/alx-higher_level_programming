@@ -24,7 +24,7 @@ if __name__ == '__main__':
     cursor = db_connection.cursor()
 
     cursor.execute("""SELECT * FROM states
-        WHERE name = '{:s}' ORDER BY id ASC;""".format(state_name))
+        WHERE name = BINARY '{:s}' ORDER BY id ASC;""".format(state_name))
 
     m = cursor.fetchall()
     for i in m:
