@@ -24,4 +24,9 @@ if __name__ == "__main__":
     session.add(new_state)
     session.commit()
 
+    state = session.query(State).filter(State.name == "Louisiana")\
+        .order_by(-State.id).first()
+
+    print(state.id)
+
     session.close()
