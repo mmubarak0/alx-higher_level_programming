@@ -8,4 +8,4 @@ if __name__ == "__main__":
     payload = {'key1': 'value1', 'key2': 'value2'}
     r = requests.post(sys.argv[1], data=payload)
     r = requests.get(sys.argv[1])
-    print(r.headers['X-Request-Id'])
+    print(r.headers.get('X-Request-Id'))
